@@ -8,9 +8,10 @@ RUN set -x; \
  && dnf install git python3-pip -y \
  && dnf clean all
 
-RUN mkdir /var/lib/knaboard-tasks-from-email \
+RUN mkdir /usr/local/lib/knaboard-tasks-from-email \
  && git clone https://github.com/radiorabe/kanboard-tasks-from-email.git \
- /var/lib/kanboard-tasks-from-email \
- && pip3 install -r /var/lib/kanboard-tasks-from-email/requirements.txt
+ /usr/local/lib/kanboard-tasks-from-email \
+ && pip3 install -r /usr/local/lib/kanboard-tasks-from-email/requirements.txt
 
-ENTRYPOINT [ "python3", "/usr/libexec/kanboard-tasks-from-email/tasks_from_email.py"]
+ENTRYPOINT [ "python3", \
+ "/usr/local/lib/kanboard-tasks-from-email/src/tasks_from_email.py" ]
